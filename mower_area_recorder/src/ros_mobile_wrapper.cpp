@@ -9,17 +9,17 @@
  */
 void RecordingBtnCallback(const std_msgs::Bool Msg)
 {
-  ROS_INFO("I heard RecordingBtn: [%s]", (Msg?"true":"false"));
+  ROS_INFO("I heard RecordingBtn: [%s]", (Msg.data?"true":"false"));
 }
 
 void SetBaseBtnCallback(const std_msgs::Bool Msg)
 {
-  ROS_INFO("I heard SetBaseBtn: [%s]", (Msg?"true":"false"));
+  ROS_INFO("I heard SetBaseBtn: [%s]", (Msg.data?"true":"false"));
 }
 
 void CompletedRecordingBtnCallback(const std_msgs::Bool Msg)
 {
-  ROS_INFO("I heard CompletedRecordingBtn: [%s]", (Msg?"true":"false"));
+  ROS_INFO("I heard CompletedRecordingBtn: [%s]", (Msg.data?"true":"false"));
 }
 
 int main(int argc, char **argv)
@@ -30,11 +30,11 @@ int main(int argc, char **argv)
  //We subscribe to topics names as defined in parameters
   std::string TopicName;
   n.getParam("recording_btn", TopicName);
-  ros::Subscriber sub = n.subscribe(TopicName, 10, RecordingBtnCallback);
+  ros::Subscriber sub1 = n.subscribe(TopicName, 10, RecordingBtnCallback);
   n.getParam("set_base_btn", TopicName);
-  ros::Subscriber sub = n.subscribe(TopicName, 10, SetBaseBtnCallback);
+  ros::Subscriber sub2 = n.subscribe(TopicName, 10, SetBaseBtnCallback);
   n.getParam("completed_recording_btn", TopicName);
-  ros::Subscriber sub = n.subscribe(TopicName, 10, CompletedRecordingBtnCallback);
+  ros::Subscriber sub3 = n.subscribe(TopicName, 10, CompletedRecordingBtnCallback);
 
   ros::spin();
 
