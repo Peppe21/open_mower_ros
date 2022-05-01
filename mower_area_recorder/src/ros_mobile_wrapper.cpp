@@ -7,17 +7,17 @@
 /*
  * We implement one callback per button topic published by ROS Mobile
  */
-void RecordingBtnCallback(const std_msgs::Bool &Msg)
+void RecordingBtnCallback(const std_msgs::Bool Msg)
 {
   ROS_INFO("I heard RecordingBtn: [%s]", BOOL_STR(Msg));
 }
 
-void SetBaseBtnCallback(const std_msgs::Bool &Msg)
+void SetBaseBtnCallback(const std_msgs::Bool Msg)
 {
   ROS_INFO("I heard SetBaseBtn: [%s]", BOOL_STR(Msg));
 }
 
-void CompletedRecordingBtnCallback(const std_msgs::Bool &Msg)
+void CompletedRecordingBtnCallback(const std_msgs::Bool Msg)
 {
   ROS_INFO("I heard CompletedRecordingBtn: [%s]", BOOL_STR(Msg));
 }
