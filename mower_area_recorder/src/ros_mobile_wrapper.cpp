@@ -27,11 +27,11 @@ int main(int argc, char **argv)
 
  //We subscribe to topics names as defined in parameters
   std::string TopicName;
-  n.getParam("recording_btn", TopicName);
+  n.getParam("RecordingBtnTopicName", TopicName);
   ros::Subscriber sub1 = n.subscribe(TopicName, 10, RecordingBtnCallback);
-  n.getParam("set_base_btn", TopicName);
+  n.getParam("SetBaseBtnTopicName", TopicName);
   ros::Subscriber sub2 = n.subscribe(TopicName, 10, SetBaseBtnCallback);
-  n.getParam("completed_recording_btn", TopicName);
+  n.getParam("CompletedRecordingBtnTopicName", TopicName);
   ros::Subscriber sub3 = n.subscribe(TopicName, 10, CompletedRecordingBtnCallback);
 
   ros::spin();
