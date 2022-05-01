@@ -9,17 +9,17 @@
  */
 void RecordingBtnCallback(const std_msgs::Bool Msg)
 {
-  ROS_INFO("I heard RecordingBtn: [%s]", BOOL_STR(Msg));
+  ROS_INFO("I heard RecordingBtn: [%s]", (Msg?"true":"false"));
 }
 
 void SetBaseBtnCallback(const std_msgs::Bool Msg)
 {
-  ROS_INFO("I heard SetBaseBtn: [%s]", BOOL_STR(Msg));
+  ROS_INFO("I heard SetBaseBtn: [%s]", (Msg?"true":"false"));
 }
 
 void CompletedRecordingBtnCallback(const std_msgs::Bool Msg)
 {
-  ROS_INFO("I heard CompletedRecordingBtn: [%s]", BOOL_STR(Msg));
+  ROS_INFO("I heard CompletedRecordingBtn: [%s]", (Msg?"true":"false"));
 }
 
 int main(int argc, char **argv)
@@ -28,7 +28,7 @@ int main(int argc, char **argv)
   ros::NodeHandle n;
 
  //We subscribe to topics names as defined in parameters
-  string TopicName;
+  std::string TopicName;
   n.getParam("recording_btn", TopicName);
   ros::Subscriber sub = n.subscribe(TopicName, 10, RecordingBtnCallback);
   n.getParam("set_base_btn", TopicName);
