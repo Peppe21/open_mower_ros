@@ -9,7 +9,7 @@
         <param name="~coalesce_interval" value="0.06"/>
     </node>
 	
-	<node name="ros_mobile_wrapper" pkg="ros_mobile_wrapper" type="ros_mobile_wrapper_node" required="false" >
+	<node name="ros_mobile_wrapper" pkg="mower_area_recorder" type="ros_mobile_wrapper_node" required="false" >
         <param name="RecordingBtnTopicName" value="recording_btn"/>
         <param name="SetBaseBtnTopicName" value="set_base_btn"/>
 		<param name="CompletedRecordingBtnTopicName" value="completed_recording_btn"/>
