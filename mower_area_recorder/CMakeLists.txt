@@ -156,6 +156,10 @@ add_executable(area_recorder src/area_recorder.cpp)
 add_dependencies(area_recorder ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS})
 target_link_libraries(area_recorder ${catkin_LIBRARIES})
 
+add_executable(ros_mobile_wrapper src/ros_mobile_wrapper.cpp)
+add_dependencies(ros_mobile_wrapper ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS})
+target_link_libraries(ros_mobile_wrapper ${catkin_LIBRARIES})
+
 #############
 ## Install ##
 #############

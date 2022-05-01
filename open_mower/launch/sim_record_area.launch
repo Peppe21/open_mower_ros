@@ -8,6 +8,12 @@
         <param name="~autorepeat_rate" value="10.0"/>
         <param name="~coalesce_interval" value="0.06"/>
     </node>
+	
+	<node name="ros_mobile_wrapper" pkg="ros_mobile_wrapper" required="false" >
+        <param name="RecordingBtnTopicName" value="recording_btn"/>
+        <param name="SetBaseBtnTopicName" value="set_base_btn"/>
+		<param name="CompletedRecordingBtnTopicName" value="completed_recording_btn"/>
+    </node>
 
     <node name="joy_teleop" pkg="teleop_twist_joy" type="teleop_node" required="true" >
         <param name="~scale_linear" value="0.5"/>
