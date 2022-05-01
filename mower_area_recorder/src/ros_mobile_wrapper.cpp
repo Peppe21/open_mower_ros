@@ -1,24 +1,25 @@
 #include "ros/ros.h"
 #include "std_msgs/Bool.h"
 #include <string>
-#include <format>
+
+#define BOOL_STR(b) (b?"true":"false")
 
 /*
  * We implement one callback per button topic published by ROS Mobile
  */
 void RecordingBtnCallback(const std_msgs::Bool &Msg)
 {
-  ROS_INFO("I heard RecordingBtn: [%s]", std::format("{:6}", Msg));
+  ROS_INFO("I heard RecordingBtn: [%s]", BOOL_STR(Msg));
 }
 
 void SetBaseBtnCallback(const std_msgs::Bool &Msg)
 {
-  ROS_INFO("I heard SetBaseBtn: [%s]", std::format("{:6}", Msg));
+  ROS_INFO("I heard SetBaseBtn: [%s]", BOOL_STR(Msg));
 }
 
 void CompletedRecordingBtnCallback(const std_msgs::Bool &Msg)
 {
-  ROS_INFO("I heard CompletedRecordingBtn: [%s]", std::format("{:6}", Msg));
+  ROS_INFO("I heard CompletedRecordingBtn: [%s]", BOOL_STR(Msg));
 }
 
 int main(int argc, char **argv)
