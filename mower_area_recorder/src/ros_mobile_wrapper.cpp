@@ -2,7 +2,7 @@
 #include "std_msgs/Bool.h"
 #include <string>
 
-#define BOOL_STR(b) (b?"true":"false")
+#define BOOL_STR(const b) (b?"true":"false")
 
 /*
  * We implement one callback per button topic published by ROS Mobile
