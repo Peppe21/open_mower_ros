@@ -1,6 +1,10 @@
 #include "ros/ros.h"
+#include "sensor_msgs/Joy.h"
 #include "std_msgs/Bool.h"
 #include <string>
+
+
+ros::Publisher mobwrapp_pub;
 
 /*
  * We implement one callback per button topic published by ROS Mobile
@@ -8,31 +12,52 @@
 void RecordingBtnCallback(const std_msgs::Bool Msg)
 {
   ROS_INFO("I heard RecordingBtn: [%s]", (Msg.data?"true":"false"));
+  sensor_msgs::Joy msg;
+  msg.buttons[0]=0;
+  msg.buttons[1]=1;
+  msg.buttons[2]=0;
+  mobwrapp_pub.publish(msg);
 }
 
 void SetBaseBtnCallback(const std_msgs::Bool Msg)
 {
   ROS_INFO("I heard SetBaseBtn: [%s]", (Msg.data?"true":"false"));
+  sensor_msgs::Joy msg;
+  msg.buttons[0]=0;
+  msg.buttons[1]=0;
+  msg.buttons[2]=1;
+  mobwrapp_pub.publish(msg);
+
 }
 
 void CompletedRecordingBtnCallback(const std_msgs::Bool Msg)
 {
-  ROS_INFO("I heard CompletedRecordingBtn: [%s]", (Msg.data?"true":"false"));
+    ROS_INFO("I heard CompletedRecordingBtn: [%s]", (Msg.data?"true":"false"));
+  sensor_msgs::Joy msg;
+  msg.buttons[0]=0;
+  msg.buttons[1]=0;
+  msg.buttons[2]=0;
+  msg.buttons[3]=1;
+  mobwrapp_pub.publish(msg);
 }
 
 int main(int argc, char **argv)
 {
   ros::init(argc, argv, "ros_mobile_wrapper");
   ros::NodeHandle n;
+  
+  mobwrapp_pub = n.advertise<sensor_msgs::Joy>("mobwrapp_pub", 100); 
 
  //We subscribe to topics names as defined in parameters
   std::string TopicName;
-  n.getParam("RecordingBtnTopicName", TopicName);
+  n.getParam("/ros_mobile_wrapper/RecordingBtnTopicName", TopicName);
   ros::Subscriber sub1 = n.subscribe(TopicName, 10, RecordingBtnCallback);
-  n.getParam("SetBaseBtnTopicName", TopicName);
+  n.getParam("/ros_mobile_wrapper/SetBaseBtnTopicName", TopicName);
   ros::Subscriber sub2 = n.subscribe(TopicName, 10, SetBaseBtnCallback);
-  n.getParam("CompletedRecordingBtnTopicName", TopicName);
+  n.getParam("/ros_mobile_wrapper/CompletedRecordingBtnTopicName", TopicName);
   ros::Subscriber sub3 = n.subscribe(TopicName, 10, CompletedRecordingBtnCallback);
+
+  
 
   ros::spin();
 

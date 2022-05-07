@@ -54,6 +54,11 @@ void odom_received(const nav_msgs::Odometry &odom_msg) {
     last_odom = odom_msg;
     has_odom = true;
 }
+
+void mobwrapp_received(const sensor_msgs::Joy &joy_msg) {
+
+}
+
 void joy_received(const sensor_msgs::Joy &joy_msg) {
 
     if (joy_msg.buttons[1] && !last_joy.buttons[1]) {
@@ -233,9 +238,19 @@ int main(int argc, char **argv) {
 
     ROS_INFO_STREAM("Starting recording area");
 
-    ROS_INFO_STREAM("Subscribing to /joy for user input");
-    ros::Subscriber joy_sub = n.subscribe("/joy", 100,
-                                          joy_received);
+    std::int32_t UseRosMobile;
+    ros::Subscriber joy_sub;
+    ros::Subscriber mobwrapp_sub;
+    ROS_INFO("NodeHandle ns :%s",n.getNamespace().c_str());
+    n.getParam("/area_recorder/UseRosMobile", UseRosMobile);
+    if (UseRosMobile != 1){
+        ROS_INFO_STREAM("Subscribing to /joy for button input");
+        joy_sub = n.subscribe("/joy", 100, joy_received);
+    }else{
+        ROS_INFO_STREAM("Subscribing to /ros_mobile_wrapper for button input");
+        mobwrapp_sub = n.subscribe("/mobwrapp_pub", 100, mobwrapp_received);
+    }
+
     ros::Subscriber odom_sub = n.subscribe("mower/odom", 100,
                                           odom_received);
 

@@ -9,21 +9,22 @@
         <param name="~coalesce_interval" value="0.06"/>
     </node>
 	
-	<node name="ros_mobile_wrapper" pkg="mower_area_recorder" type="ros_mobile_wrapper" required="false" >
-        <param name="RecordingBtnTopicName" value="recording_btn"/>
-        <param name="SetBaseBtnTopicName" value="set_base_btn"/>
-		<param name="CompletedRecordingBtnTopicName" value="completed_recording_btn"/>
-    </node>
-
-    <node name="joy_teleop" pkg="teleop_twist_joy" type="teleop_node" required="true" >
+   <node name="joy_teleop" pkg="teleop_twist_joy" type="teleop_node" required="true" >
         <param name="~scale_linear" value="0.5"/>
         <param name="~scale_angular" value="0.5"/>
         <param name="~scale_linear_turbo" value="1.0"/>
         <param name="~scale_angular_turbo" value="1.0"/>
         <param name="~enable_turbo_button" value="4"/>
     </node>
-
+	<node name="ros_mobile_wrapper" pkg="mower_area_recorder" type="ros_mobile_wrapper" required="true" >
+        <param name="RecordingBtnTopicName" value="recording_btn"/>
+        <param name="SetBaseBtnTopicName" value="set_base_btn"/>
+		<param name="CompletedRecordingBtnTopicName" value="completed_recording_btn"/>
+    </node>
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find open_mower)/rviz/sim_record_area.rviz" required="true" />
     <node pkg="mower_map" type="mower_map_service" name="mower_map" required="true" />
-    <node pkg="mower_area_recorder" type="area_recorder" name="area_recorder" required="true" />
+    <node pkg="mower_area_recorder" type="area_recorder" name="area_recorder" required="true">
+         <param name="UseRosMobile" value="1"/>
+    </node>
+
 </launch>
