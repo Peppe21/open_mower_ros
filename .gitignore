@@ -53,3 +53,17 @@ CATKIN_IGNORE
 .idea/
 
 cmake-build-debug/
+
+# Visual Studio Code excludes
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+!.vscode/c_cpp_properties.json
+# Visual Studio Code Local History 
+.history/
+
+# Visual Studio Code Extensions builds
+*.vsix
