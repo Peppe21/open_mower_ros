@@ -12,32 +12,34 @@ ros::Publisher mobwrapp_pub;
 void RecordingBtnCallback(const std_msgs::Bool Msg)
 {
   ROS_INFO("I heard RecordingBtn: [%s]", (Msg.data?"true":"false"));
+  int val = Msg.data;
   sensor_msgs::Joy msg;
-  msg.buttons[0]=0;
-  msg.buttons[1]=1;
-  msg.buttons[2]=0;
+  msg.buttons.push_back(0);
+  msg.buttons.push_back(val);
+  msg.buttons.push_back(0);
   mobwrapp_pub.publish(msg);
 }
 
 void SetBaseBtnCallback(const std_msgs::Bool Msg)
 {
   ROS_INFO("I heard SetBaseBtn: [%s]", (Msg.data?"true":"false"));
+  int val = Msg.data;
   sensor_msgs::Joy msg;
-  msg.buttons[0]=0;
-  msg.buttons[1]=0;
-  msg.buttons[2]=1;
+  msg.buttons.push_back(0);
+  msg.buttons.push_back(0);
+  msg.buttons.push_back(val);
   mobwrapp_pub.publish(msg);
 
 }
 
 void CompletedRecordingBtnCallback(const std_msgs::Bool Msg)
 {
-    ROS_INFO("I heard CompletedRecordingBtn: [%s]", (Msg.data?"true":"false"));
+  ROS_INFO("I heard CompletedRecordingBtn: [%s]", (Msg.data?"true":"false"));
+  int val = Msg.data;
   sensor_msgs::Joy msg;
-  msg.buttons[0]=0;
-  msg.buttons[1]=0;
-  msg.buttons[2]=0;
-  msg.buttons[3]=1;
+  msg.buttons.push_back(val);
+  msg.buttons.push_back(0);
+  msg.buttons.push_back(0);
   mobwrapp_pub.publish(msg);
 }
 

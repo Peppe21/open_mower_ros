@@ -55,10 +55,6 @@ void odom_received(const nav_msgs::Odometry &odom_msg) {
     has_odom = true;
 }
 
-void mobwrapp_received(const sensor_msgs::Joy &joy_msg) {
-
-}
-
 void joy_received(const sensor_msgs::Joy &joy_msg) {
 
     if (joy_msg.buttons[1] && !last_joy.buttons[1]) {
@@ -87,6 +83,10 @@ void joy_received(const sensor_msgs::Joy &joy_msg) {
     last_joy = joy_msg;
 }
 
+// ROS Mobile JoyWrapper received
+void mobwrapp_received(const sensor_msgs::Joy &joy_msg) {
+    joy_received(joy_msg); 
+}
 
 bool recordNewPolygon(geometry_msgs::Polygon &polygon) {
 
@@ -238,10 +238,11 @@ int main(int argc, char **argv) {
 
     ROS_INFO_STREAM("Starting recording area");
 
-    std::int32_t UseRosMobile;
+    int UseRosMobile;
     ros::Subscriber joy_sub;
     ros::Subscriber mobwrapp_sub;
-    ROS_INFO("NodeHandle ns :%s",n.getNamespace().c_str());
+ 
+    //Check if we us RosMobile app for control instead of joystick
     n.getParam("/area_recorder/UseRosMobile", UseRosMobile);
     if (UseRosMobile != 1){
         ROS_INFO_STREAM("Subscribing to /joy for button input");
