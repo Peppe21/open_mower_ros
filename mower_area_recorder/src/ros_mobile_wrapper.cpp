@@ -17,6 +17,8 @@ void RecordingBtnCallback(const std_msgs::Bool Msg)
   msg.buttons.push_back(0);
   msg.buttons.push_back(val);
   msg.buttons.push_back(0);
+  msg.buttons.push_back(0);
+  msg.buttons.push_back(0);
   mobwrapp_pub.publish(msg);
 }
 
@@ -28,6 +30,8 @@ void SetBaseBtnCallback(const std_msgs::Bool Msg)
   msg.buttons.push_back(0);
   msg.buttons.push_back(0);
   msg.buttons.push_back(val);
+  msg.buttons.push_back(0);
+  msg.buttons.push_back(0);
   mobwrapp_pub.publish(msg);
 
 }
@@ -38,6 +42,8 @@ void CompletedRecordingBtnCallback(const std_msgs::Bool Msg)
   int val = Msg.data;
   sensor_msgs::Joy msg;
   msg.buttons.push_back(val);
+  msg.buttons.push_back(0);
+  msg.buttons.push_back(0);
   msg.buttons.push_back(0);
   msg.buttons.push_back(0);
   mobwrapp_pub.publish(msg);
@@ -58,8 +64,6 @@ int main(int argc, char **argv)
   ros::Subscriber sub2 = n.subscribe(TopicName, 10, SetBaseBtnCallback);
   n.getParam("/ros_mobile_wrapper/CompletedRecordingBtnTopicName", TopicName);
   ros::Subscriber sub3 = n.subscribe(TopicName, 10, CompletedRecordingBtnCallback);
-
-  
 
   ros::spin();
 

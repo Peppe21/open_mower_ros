@@ -44,6 +44,7 @@ bool set_docking_position = false;
 bool has_odom = false;
 
 sensor_msgs::Joy last_joy;
+
 nav_msgs::Odometry last_odom;
 
 visualization_msgs::MarkerArray markers;
@@ -241,7 +242,13 @@ int main(int argc, char **argv) {
     int UseRosMobile;
     ros::Subscriber joy_sub;
     ros::Subscriber mobwrapp_sub;
- 
+
+    //Init_lastJoy 
+    last_joy.buttons.push_back(0);
+    last_joy.buttons.push_back(0);
+    last_joy.buttons.push_back(0);
+    last_joy.buttons.push_back(0);
+    last_joy.buttons.push_back(0);
     //Check if we us RosMobile app for control instead of joystick
     n.getParam("/area_recorder/UseRosMobile", UseRosMobile);
     if (UseRosMobile != 1){
