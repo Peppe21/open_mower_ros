@@ -41,10 +41,10 @@ void CompletedRecordingBtnCallback(const std_msgs::Bool Msg)
   ROS_INFO("I heard CompletedRecordingBtn: [%s]", (Msg.data?"true":"false"));
   int val = Msg.data;
   sensor_msgs::Joy msg;
+  msg.buttons.push_back(0);
+  msg.buttons.push_back(0);
+  msg.buttons.push_back(0);
   msg.buttons.push_back(val);
-  msg.buttons.push_back(0);
-  msg.buttons.push_back(0);
-  msg.buttons.push_back(0);
   msg.buttons.push_back(0);
   mobwrapp_pub.publish(msg);
 }
