@@ -1,7 +1,10 @@
 # ignore build and devel folders
 build/
 devel/
+aarch64/**/
+aarch64/*.tar.gz
 .catkin_workspace
+.catkin_tools
 src/CMakeLists.txt
 
 .idea/
