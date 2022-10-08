@@ -1,3 +1,5 @@
+#toolchain based on : https://medium.com/@tahsincankose/cross-compiling-ros-project-for-arm-263642b405ac 
+
 #Replace CMAKE_CROSS_COMPILE_PREFIX who can be expressed in home based format with a full path equivalent
 get_filename_component(CMAKE_CROSS_COMPILE_PREFIX ${CMAKE_CURRENT_LIST_FILE} DIRECTORY )
 
