@@ -51,6 +51,7 @@
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>open_mower</build_depend>
   <build_depend>roscpp</build_depend>
+  <build_depend>slic3r_coverage_planner</build_depend>
   <build_export_depend>open_mower</build_export_depend>
   <build_export_depend>roscpp</build_export_depend>
   <exec_depend>open_mower</exec_depend>

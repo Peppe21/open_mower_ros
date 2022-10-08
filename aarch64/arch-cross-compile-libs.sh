@@ -3,8 +3,9 @@
 #Script to archive all openMower dependencies to support cross compiler requirements
 #To be run on target system (raspberry pi)
 
-tar cvfh ~/cross-compile-libs.tar.gz /opt/ros/noetic/
-
+#Noetic 
+tar cvfh ~/cross-compile-libs.tar /opt/ros/noetic/
+#/usr/lib/aarch64-linux-gnu
 tar uvfh ~/cross-compile-libs.tar /usr/lib/aarch64-linux-gnu/cmake
 tar uvfh ~/cross-compile-libs.tar /usr/lib/aarch64-linux-gnu/librt*
 tar uvfh ~/cross-compile-libs.tar /usr/lib/aarch64-linux-gnu/libopencv* 
@@ -144,12 +145,14 @@ tar uvfh ~/cross-compile-libs.tar /usr/lib/aarch64-linux-gnu/libklu*
 tar uvfh ~/cross-compile-libs.tar /usr/lib/aarch64-linux-gnu/libumfpack*
 tar uvfh ~/cross-compile-libs.tar /usr/lib/aarch64-linux-gnu/libyaml*
 tar uvfh ~/cross-compile-libs.tar /usr/lib/aarch64-linux-gnu/libGeographic*
+#/usr/lib
 tar uvfh ~/cross-compile-libs.tar /usr/lib/libmfhdfalt*
 tar uvfh ~/cross-compile-libs.tar /usr/lib/libdfalt*
 tar uvfh ~/cross-compile-libs.tar /usr/lib/libogdi*
 tar uvfh ~/cross-compile-libs.tar /usr/lib/libarmadillo*
 tar uvfh ~/cross-compile-libs.tar /usr/lib/liborocos*
 tar uvfh ~/cross-compile-libs.tar /usr/lib/libgdal*
+#/usr/include
 tar uvfh ~/cross-compile-libs.tar /usr/include/opencv4
 tar uvfh ~/cross-compile-libs.tar /usr/include/boost
 tar uvfh ~/cross-compile-libs.tar /usr/include/log4cxx
@@ -164,6 +167,7 @@ tar uvfh ~/cross-compile-libs.tar /usr/include/bzlib.h
 tar uvfh ~/cross-compile-libs.tar /usr/include/lz4.h
 tar uvfh ~/cross-compile-libs.tar /usr/include/console_bridge_export.h
 tar uvfh ~/cross-compile-libs.tar /usr/include/tinyxml2.h
+#/usr/share
 tar uvfh ~/cross-compile-libs.tar /usr/share/orocos_kdl
 
 gzip -f cross-compile-libs.tar
