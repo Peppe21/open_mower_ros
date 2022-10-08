@@ -65,3 +65,5 @@ qtcreator-*
 CATKIN_IGNORE
 
 cmake-build-debug/
+.vscode
+
