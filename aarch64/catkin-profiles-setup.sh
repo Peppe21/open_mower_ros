@@ -1,4 +1,6 @@
-cd ~/open_mower_ros
+#!/bin/bash
+
+cd "${HOME}/open_mower_ros"
 catkin profile remove aarch64-dev
 catkin profile add aarch64-dev
 catkin profile set aarch64-dev
