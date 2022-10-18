@@ -3,6 +3,7 @@ build/
 devel/
 aarch64/**/
 aarch64/*.tar.gz
+*-aarch64/
 .catkin_workspace
 .catkin_tools
 src/CMakeLists.txt
