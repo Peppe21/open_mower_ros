@@ -16,6 +16,8 @@ find_package(catkin REQUIRED COMPONENTS
         mower_msgs
         mower_map
         rosbridge_server
+        mower_map
+        xbot_msgs
         )
 
 ## System dependencies are found with CMake's conventions
