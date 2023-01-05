@@ -8,13 +8,16 @@ project(mower_comms)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  mower_msgs
+        mower_msgs
         sensor_msgs
   roscpp
   serial
-        xesc_driver
-        xesc_msgs
-        xesc_interface
+  xesc_msgs
+  xesc_2040_driver
+  vesc_driver
+  xesc_driver  
+  xesc_interface
+  
 )
 
 find_package(
