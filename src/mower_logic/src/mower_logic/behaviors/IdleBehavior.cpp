@@ -21,7 +21,6 @@ extern void stopBlade();
 extern void setEmergencyMode(bool emergency);
 
 extern mower_msgs::Status last_status;
-extern bool mowingAborted;
 extern mower_logic::MowerLogicConfig last_config;
 extern dynamic_reconfigure::Server<mower_logic::MowerLogicConfig> *reconfigServer;
 
@@ -58,12 +57,16 @@ Behavior *IdleBehavior::execute() {
         if (manual_start_mowing ||
             (last_config.automatic_start && (last_status.v_battery > last_config.battery_full_voltage && last_status.mow_esc_status.temperature_motor < last_config.motor_cold_temperature &&
              !last_config.manual_pause_mowing))) {
-            mowingAborted = false;
             return &UndockingBehavior::INSTANCE;
         }
 
         if(start_area_recorder) {
             return &AreaRecordingBehavior::INSTANCE;
+        }
+
+        // This gets called if we need to refresh, e.g. on clearing maps
+        if(aborted) {
+            return &IdleBehavior::INSTANCE;
         }
 
         r.sleep();
