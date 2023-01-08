@@ -10,10 +10,12 @@ project(mower_comms)
 find_package(catkin REQUIRED COMPONENTS
         mower_msgs
         sensor_msgs
-  roscpp
-  serial
-        xesc_driver
+        roscpp
+        serial
         xesc_msgs
+        vesc_driver
+        xesc_2040_driver      
+        xesc_driver
         xesc_interface
         xbot_msgs
 )
@@ -112,10 +114,10 @@ find_package(
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES mower_comms
-#  CATKIN_DEPENDS mower_msgs roscpp serial
-#  DEPENDS system_lib
+  #INCLUDE_DIRS include
+  #LIBRARIES mower_comms
+  #CATKIN_DEPENDS mower_msgs roscpp serial 
+  #DEPENDS system_lib
 )
 
 ###########
