@@ -158,16 +158,20 @@ tar uvfh ~/cross-compile-libs.tar /usr/include/boost
 tar uvfh ~/cross-compile-libs.tar /usr/include/log4cxx
 tar uvfh ~/cross-compile-libs.tar /usr/include/kdl
 tar uvfh ~/cross-compile-libs.tar /usr/include/eigen3
+tar uvfh ~/cross-compile-libs.tar /usr/include/openssl
 tar uvfh ~/cross-compile-libs.tar /usr/include/console_bridge
 tar uvfh ~/cross-compile-libs.tar /usr/include/suitesparse
 tar uvfh ~/cross-compile-libs.tar /usr/include/Poco
 tar uvfh ~/cross-compile-libs.tar /usr/include/gdal
 tar uvfh ~/cross-compile-libs.tar /usr/include/GeographicLib
+tar uvfh ~/cross-compile-libs.tar /usr/include/websocketpp
 tar uvfh ~/cross-compile-libs.tar /usr/include/bzlib.h
 tar uvfh ~/cross-compile-libs.tar /usr/include/lz4.h
 tar uvfh ~/cross-compile-libs.tar /usr/include/console_bridge_export.h
 tar uvfh ~/cross-compile-libs.tar /usr/include/tinyxml2.h
+
+
 #/usr/share
 tar uvfh ~/cross-compile-libs.tar /usr/share/orocos_kdl
 
-gzip -f cross-compile-libs.tar
+gzip -f ~/cross-compile-libs.tar
