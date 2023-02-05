@@ -66,8 +66,6 @@ private:
 
     ros::Subscriber joy_sub, pose_sub;
 
-    ros::Subscriber dock_sub, polygon_sub, mow_area_sub, nav_area_sub;
-
     ros::ServiceClient add_mowing_area_client, set_docking_point_client;
 
     bool has_first_docking_pos = false;
@@ -91,11 +89,6 @@ private:
     bool getDockingPosition(geometry_msgs::Pose &pos);
     void pose_received(const xbot_msgs::AbsolutePose::ConstPtr &msg);
     void joy_received(const sensor_msgs::Joy &joy_msg);
-    void record_dock_received(std_msgs::Bool state_msg);
-    void record_polygon_received(std_msgs::Bool state_msg);
-    void record_mowing_received(std_msgs::Bool state_msg);
-    void record_navigation_received(std_msgs::Bool state_msg);
-
     void update_actions();
 
 public:
