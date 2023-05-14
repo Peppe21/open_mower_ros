@@ -72,6 +72,7 @@ For that I used VSCode search using regex and replaced content in files as follo
 |(?<!\\})\/usr\/share       | ./aarch64/opt/									|${CMAKE_CROSS_COMPILE_PREFIX}/usr/share|
 |;pthread;                 | ./aarch64/opt/ros/noetic/share/roscpp/cmake/	|;${CMAKE_CROSS_COMPILE_PREFIX}/usr/lib/aarch64-linux-gnu/libpthread.so.0;|
 
+NB : if using VSCode ensure carefully effecive replacement took place as this is a usual source of compilation errors !!!
 
 ### 6. Compile using Catkin (on dev machine)
 Build using toolchain via dev catkin profile
